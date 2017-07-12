@@ -33,8 +33,21 @@ export class Api {
             .map(resp => Object.keys(resp).map(key => Object.assign(resp[key], { id: key })));
     }
 
-    selectParking(parking: Parking, occupiedBy: User, expires: number) {
+    selectParking(parking: Parking, occupiedBy: User, expires: string) {
         return this.parkingsRef.child(parking.id).update({ occupiedBy, expires });
+    }
+
+    selectInvador(parking: Parking, plateNumber) {
+        const to = 'ogeva@blackberry.com';
+        const subject = `Invador!`;
+        const text = `Car number: ${plateNumber} is parking in spot #${parking.serial} (level ${parking.level})`;
+        const mailPromise = this.post('sendMail', { to, subject, text });
+        const dbPromise = this.parkingsRef.child(parking.id).update({ invador: plateNumber });
+        return Promise.all([mailPromise, dbPromise]);
+    }
+
+    removeInvador(parking: Parking) {
+        return this.parkingsRef.child(parking.id).update({ invador: false });
     }
 
     exitParking(parking: Parking) {

@@ -39,10 +39,20 @@ export class FloorTwo {
             return;
         }
 
-        let modal = this.modalCtrl.create(TimePicker)
+        if (parking.invador) {
+            this.api.removeInvador(parking);
+            return;
+        }
+
+        let modal = this.modalCtrl.create(TimePicker, { parked: this.parked });
         modal.present();
-        modal.onDidDismiss(expires => {
+        modal.onDidDismiss((expires: string) => {
             if (!expires) {
+                return;
+            }
+
+            if (!expires.includes(':')) {
+                this.api.selectInvador(parking, expires);
                 return;
             }
 

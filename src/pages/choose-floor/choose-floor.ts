@@ -34,11 +34,11 @@ export class ChooseFloor {
         this.api.getParkings().subscribe(resp => {
             this.emptySpacesFloorTwo = resp
                 .filter(p => p.level === 2)
-                .reduce((sum, p) => p.occupiedBy ? sum - 1 : sum, spacesFloorTwo);
+                .reduce((sum, p) => (p.occupiedBy || p.invador) ? sum - 1 : sum, spacesFloorTwo);
 
             this.emptySpacesFloorThree = resp
                 .filter(p => p.level === 3)
-                .reduce((sum, p) => p.occupiedBy ? sum - 1 : sum, spacesFloorThree);
+                .reduce((sum, p) => (p.occupiedBy || p.invador) ? sum - 1 : sum, spacesFloorThree);
         })
     }
 

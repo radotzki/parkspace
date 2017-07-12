@@ -10,4 +10,5 @@ export interface Parking {
     level: number;
     occupiedBy?: User;
     expires?: string;
+    invador?: boolean;
 }

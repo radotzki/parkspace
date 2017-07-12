@@ -11,32 +11,45 @@
 
 <ion-content>
 
-    <div class="time-picker">
-        <h1 class="desc"> Select estimated leave time </h1>
+    <div class="time-picker" *ngIf="!reportMode">
+        <h1 class="desc" *ngIf="!showOnlyInvador"> Select estimated leave time </h1>
 
-        <div class="time-picker-row">
+        <div class="time-picker-row" *ngIf="!showOnlyInvador">
             <button ion-button outline (click)="dismiss('10:00')"> 10:00 </button>
             <button ion-button outline (click)="dismiss('11:00')"> 11:00 </button>
             <button ion-button outline (click)="dismiss('12:00')"> 12:00 </button>
         </div>
 
-        <div class="time-picker-row">
+        <div class="time-picker-row" *ngIf="!showOnlyInvador">
             <button ion-button outline (click)="dismiss('13:00')"> 13:00 </button>
             <button ion-button outline (click)="dismiss('14:00')"> 14:00 </button>
             <button ion-button outline (click)="dismiss('15:00')"> 15:00 </button>
         </div>
 
-        <div class="time-picker-row">
+        <div class="time-picker-row" *ngIf="!showOnlyInvador">
             <button ion-button outline (click)="dismiss('16:00')"> 16:00 </button>
             <button ion-button outline (click)="dismiss('17:00')"> 17:00 </button>
             <button ion-button outline (click)="dismiss('18:00')"> 18:00 </button>
         </div>
 
         <div class="time-picker-row">
-            <button ion-button outline (click)="dismiss('19:00')"> 19:00 </button>
-            <button ion-button outline (click)="dismiss('20:00')"> 20:00 </button>
-            <button ion-button outline (click)="dismiss('21:00')"> 21:00 </button>
+            <button ion-button outline *ngIf="!showOnlyInvador" (click)="dismiss('19:00')"> 19:00 </button>
+            <button ion-button outline *ngIf="!showOnlyInvador" (click)="dismiss('20:00')"> 20:00 </button>
+            <button ion-button outline color="danger" (click)="reportMode=true"> Invador </button>
         </div>
+
+    </div>
+
+    <div *ngIf="reportMode" class="report-mode">
+        <form (submit)="dismiss(number.value)" >
+            <p> Enter car plate number </p>
+
+            <ion-item class="input-item" style="background: transparent; margin: 20px 0;">
+                <ion-input placeholder="Number" type="tel" #number></ion-input>
+            </ion-item>
+
+            <button ion-button block outline type="submit" [disabled]="!number.value">Report</button>
+        </form>
     </div>
 
 </ion-content>
