@@ -7,9 +7,6 @@ exports.sendMail = functions.https.onRequest((req, res) => {
         const to = req.body.to;
         const subject = req.body.subject;
         const text = req.body.text;
-        console.log('to', to);
-        console.log('subject', subject);
-        console.log('text', text);
 
         return sendMail(to, subject, text).then(() => {
             res.send({});
