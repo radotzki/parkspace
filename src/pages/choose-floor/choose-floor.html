@@ -1,0 +1,39 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Parkspaces</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="instructions">
+        <h1> {{text}} </h1>
+        <p *ngIf="!showExit"> Please select floor number </p>
+    </div>
+
+    <div class="floors">
+        <div class="floor-chooser" >
+            <button ion-button outline block (click)="choose(2)">
+                <span class="floor-level"> Floor -2 </span>
+                <span class="floor-counter"> (empty spaces: {{emptySpacesFloorTwo}}) </span>
+            </button>
+        </div>
+
+        <div class="floor-chooser" >
+            <button ion-button outline block (click)="choose(3)">
+                <span class="floor-level"> Floor -3 </span>
+                <span class="floor-counter"> (empty spaces: {{emptySpacesFloorThree}}) </span>
+            </button>
+        </div>
+
+        <div class="floor-chooser" *ngIf="showExit">
+            <button ion-button outline block (click)="exit()">
+                <span class="floor-level"> Going Home </span>
+            </button>
+        </div>
+    </div>
+
+</ion-content>

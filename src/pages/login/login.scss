@@ -1,0 +1,16 @@
+page-login {
+    .header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+
+        img {
+            width: 200px;
+            height: 100%;
+        }
+    }
+
+    .input-item {
+        background: transparent;
+    }
+}

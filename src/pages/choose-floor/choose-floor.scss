@@ -1,0 +1,22 @@
+page-choose-floor {
+
+    .instructions {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .floors {
+        margin-top: 45px;
+    }
+
+    .floor-chooser {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .floor-counter {
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+}

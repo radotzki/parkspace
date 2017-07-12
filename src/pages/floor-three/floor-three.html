@@ -1,0 +1,38 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Floor -3</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="elevator">
+        <img src="assets/elevator.png" alt="elevator">
+        <h6> Elevator </h6>
+    </div>
+
+    <div class="maps">
+
+        <div class="map">
+            <button [disabled]="parked" *ngFor="let parking of parkingsFront" class="parking" [class.occupied]="parking.occupiedBy" ion-button outline (click)="select(parking)">
+                <img class="parking-car-img" src="assets/car.svg" alt="">
+                <span class="parking-metadata"> {{parking.serial}} </span>
+                <span class="parking-metadata parking-metadata-name" *ngIf="parking.occupiedBy"> {{parking.occupiedBy.name}} </span>
+                <span class="parking-metadata parking-metadata-time" *ngIf="parking.expires"> {{parking.expires}}</span>
+            </button>
+        </div>
+
+        <div class="map">
+            <button [disabled]="parked" *ngFor="let parking of parkingsRear" [class.occupied]="parking.occupiedBy" class="parking" ion-button outline (click)="select(parking)">
+                <img class="parking-car-img" src="assets/car.svg" alt="">
+                <span class="parking-metadata"> {{parking.serial}} </span>
+                <span class="parking-metadata parking-metadata-name" *ngIf="parking.occupiedBy"> {{parking.occupiedBy.name}} </span>
+                <span class="parking-metadata parking-metadata-time" *ngIf="parking.expires"> {{parking.expires}}</span>
+            </button>
+        </div>
+
+    </div>
+</ion-content>

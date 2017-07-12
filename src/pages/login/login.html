@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="header">
+        <img src="assets/parkspaces_logo.png">
+    </div>
+
+    <form (submit)="login(name.value, email.value, phone.value)">
+
+        <ion-list>
+
+            <ion-item class="input-item">
+                <ion-input placeholder="Name" type="string" #name></ion-input>
+            </ion-item>
+
+            <ion-item class="input-item">
+                <ion-input placeholder="Email" type="email" #email></ion-input>
+            </ion-item>
+
+            <ion-item class="input-item">
+                <ion-input placeholder="Phone" type="tel" #phone></ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <button ion-button block outline type="submit" [disabled]="!email.value || !name.value || !phone.value">Login</button>
+    </form>
+
+</ion-content>
